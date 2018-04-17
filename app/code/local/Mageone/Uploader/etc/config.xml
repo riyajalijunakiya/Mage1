@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<config>
+    <phpunit>
+        <suite>
+            <modules>
+                <Mageone_Uploader />
+            </modules>
+        </suite>
+    </phpunit>
+
+    <modules>
+        <Mageone_Uploader>
+            <version>0.0.1</version>
+        </Mageone_Uploader>
+    </modules>
+
+    <global>
+        <helpers>
+            <mageone_uploader>
+                <class>Mageone_Uploader_Helper</class>
+            </mageone_uploader>
+        </helpers>
+
+        <models>
+            <mageone_uploader>
+                <class>Mageone_Uploader_Model</class>
+            </mageone_uploader>
+        </models>
+    </global>
+
+    <adminhtml>
+        <events>
+            <model_save_before>
+                <observers>
+                    <mageone_uploader_process_uploads>
+                        <type>model</type>
+                        <class>mageone_uploader/observer</class>
+                        <method>processUploads</method>
+                    </mageone_uploader_process_uploads>
+                </observers>
+            </model_save_before>
+        </events>
+    </adminhtml>
+</config>
