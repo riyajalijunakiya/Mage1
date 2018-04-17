@@ -1,0 +1,135 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    Mage
+ * @package     Mage_Cms
+ * @copyright   Copyright (c) 2013 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+-->
+<config>
+    <modules>
+        <Mageone_Adminform>
+            <version>0.1.0</version>
+        </Mageone_Adminform>
+    </modules>
+    <frontend>
+        <routers>
+            <adminform>
+                <use>standard</use>
+                <args>
+                    <module>Mageone_Adminform</module>
+                    <frontName>adminform</frontName>
+                </args>
+            </adminform>
+        </routers>
+        <translate>
+            <modules>
+                <Mageone_Adminform>
+                    <files>
+                        <default>Mageone_Adminform.csv</default>
+                    </files>
+                </Mageone_Adminform>
+            </modules>
+        </translate>
+        <layout>
+            <updates>
+                <adminform>
+                    <file>adminform.xml</file>
+                </adminform>
+            </updates>
+        </layout>
+    </frontend>
+	<admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <adminform before="Mage_Adminhtml">Mageone_Adminform_Adminhtml</adminform>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <adminhtml>
+        <translate>
+            <modules>
+                <Mageone_Adminform>
+                    <files>
+                        <default>Mageone_Adminform.csv</default>
+                    </files>
+                </Mageone_Adminform>
+            </modules>
+        </translate>
+        <layout>
+            <updates>
+                <adminform>
+                    <file>adminform.xml</file>
+                </adminform>
+            </updates>
+        </layout>
+    </adminhtml>
+    <global>
+        <models>
+            <adminform>
+                <class>Mageone_Adminform_Model</class>
+                <resourceModel>adminform_resource</resourceModel>
+            </adminform>
+            <adminform_resource>
+                <class>Mageone_Adminform_Model_Resource</class>
+                <deprecatedNode>adminform_mysql4</deprecatedNode>
+                <entities>
+                    <adminform>
+                        <table>adminform</table>
+                    </adminform>
+                </entities>
+            </adminform_resource>
+        </models>
+        <resources>
+            <adminform_setup>
+                <setup>
+                    <module>Mageone_Adminform</module>
+                </setup>
+            </adminform_setup>
+        </resources>
+        <blocks>
+            <adminform>
+                <class>Mageone_Adminform_Block</class>
+            </adminform>
+        </blocks>
+		<helpers>
+            <adminform>
+                <class>Mageone_Adminform_Helper</class>
+            </adminform>
+        </helpers>
+		<mageone_uploader_config>
+			<uploads>
+				<Mageone_Adminform_Model_Adminform>
+					<thumbnail>
+						<upload_dir>adminform/thumbnail</upload_dir>
+						<allowed_extensions>jpg,png,gif</allowed_extensions>
+						<input_name>adminform_file</input_name>
+					</thumbnail>
+				</Mageone_Adminform_Model_Adminform>
+			</uploads>
+		</mageone_uploader_config>
+    </global>
+</config>
